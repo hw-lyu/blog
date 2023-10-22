@@ -10,8 +10,8 @@ services:
     ports :
       - "9000:9000"
     volumes:
-      - ./src:/home/project/blog/src
-      - ./src/public:/home/project/blog/src/public
+      - ./src:/home/ubuntu/blog/src/public
+      - ./src/public:/home/ubuntu/blog/src/public
 
   nginx:
     image: nginx:latest
@@ -21,8 +21,8 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./src:/home/project/blog/src
-      - ./src/public:/home/project/blog/src/public
+      - ./src:/home/ubuntu/blog/src/public
+      - ./src/public:/home/ubuntu/blog/src/public
       - ./nginx.conf:/etc/nginx/nginx.conf
 
   mariadb:
