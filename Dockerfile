@@ -1,6 +1,6 @@
 FROM php:8.2-fpm
 
-WORKDIR /home
+WORKDIR /homepage
 RUN apt-get update && apt-get install -y curl && apt-get install git -y
 
 RUN curl -sS https://getcomposer.org/installer | php
@@ -15,8 +15,6 @@ RUN docker-php-ext-configure zip
 RUN docker-php-ext-install zip
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
-
-RUN composer global require laravel/installer /home/project/blog/src
 
 EXPOSE 9000
 CMD ["php-fpm"]
