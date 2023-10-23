@@ -16,5 +16,7 @@ RUN docker-php-ext-install zip
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 
+COPY --chmod=777 ./src/storage /home/homepage/blog/src/storage
+
 EXPOSE 9000
 CMD ["php-fpm"]
