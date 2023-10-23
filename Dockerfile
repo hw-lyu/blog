@@ -16,9 +16,10 @@ RUN docker-php-ext-install zip
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 
-RUN chmod -R 777 /home/homepage
-RUN chmod -R 777 /home/homepage/blog/src/bootstrap/cache
-RUN chmod -R 777 /home/homepage/blog/src/storage
+RUN chmod 775 -R /home/homepage/blog/src/bootstrap/cache
+RUN chmod 775 -R /home/homepage/blog/src/storage
+RUN chown -R www-data:www-data /home/homepage/blog/src/storage
+RUN chown -R www-data:www-data /home/homepage/blog/src/bootstrap/cache
 
 EXPOSE 9000
 CMD ["php-fpm"]
