@@ -1,6 +1,6 @@
 FROM php:8.2-fpm
 
-WORKDIR /home/homepage
+WORKDIR /home
 RUN apt-get update && apt-get install -y curl && apt-get install git -y
 
 RUN curl -sS https://getcomposer.org/installer | php
@@ -16,10 +16,10 @@ RUN docker-php-ext-install zip
 RUN docker-php-ext-install pdo pdo_mysql
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 
-RUN chown -R $USER:www-data /home/homepage/blog/storage
-RUN chown -R $USER:www-data /home/homepage/blog/bootstrap/cache
-RUN chmod 775 -R /home/homepage/blog/bootstrap/cache
-RUN chmod 775 -R /home/homepage/blog/storage
+RUN chown -R $USER:www-data /home/blog/storage
+RUN chown -R $USER:www-data /home/blog/bootstrap/cache
+RUN chmod 775 -R /home/blog/bootstrap/cache
+RUN chmod 775 -R /home/blog/storage
 
 EXPOSE 9000
 CMD ["php-fpm"]
