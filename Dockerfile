@@ -1,6 +1,6 @@
 FROM php:8.2-fpm
 
-WORKDIR /homepage
+WORKDIR /home/homepage
 RUN apt-get update && apt-get install -y curl && apt-get install git -y
 
 RUN curl -sS https://getcomposer.org/installer | php
