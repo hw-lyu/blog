@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y curl && apt-get install git -y
 RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/bin/composer
 
-RUN apt-get install -y zlib1g-dev && apt-get install -y libzip-dev && apt-get install php-xml
+RUN apt-get install -y zlib1g-dev && apt-get install -y libzip-dev && apt-get install -y php-xml && apt-get install -y php-mbstring
 
 RUN ["/bin/bash", "-c", "echo PATH=$PATH:~/.composer/vendor/bin/ >> ~/.bashrc"]
 RUN ["/bin/bash", "-c", "source ~/.bashrc"]
