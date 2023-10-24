@@ -16,7 +16,8 @@ RUN docker-php-ext-install zip
 RUN docker-php-ext-install pdo pdo_mysql
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 
-RUN chown -R $USER:www-data /home/homepage/homepage/blog/bootstrap/cache
+RUN chown -R $USER:www-data /home/homepage/blog/storage
+RUN chown -R $USER:www-data /home/homepage/blog/bootstrap/cache
 RUN chmod 775 -R /home/homepage/blog/bootstrap/cache
 RUN chmod 775 -R /home/homepage/blog/storage
 
