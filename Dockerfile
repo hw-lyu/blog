@@ -13,7 +13,7 @@ RUN ["/bin/bash", "-c", "source ~/.bashrc"]
 
 RUN docker-php-ext-configure zip
 RUN docker-php-ext-install zip
-RUN docker-php-ext-install pdo pdo_mysql
+RUN docker-php-ext-install pdo pdo_mysql php-mysql
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 
 RUN chown -R $USER:www-data /home/blog/storage
