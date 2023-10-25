@@ -20,6 +20,7 @@ services:
         restart: always
         container_name: nginx
         networks:
+            backend:
             frontend:
         ports:
             - "80:80"
