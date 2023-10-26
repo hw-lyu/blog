@@ -1,0 +1,12 @@
+@import url("//cdn.jsdelivr.net/npm/noto-sans-kr@0.1.1/styles.min.css");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: "Noto Sans Korean", sans-serif;
+}
+
+.inner {
+    @apply w-full px-10 py-6;
+}
