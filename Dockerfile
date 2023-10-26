@@ -10,8 +10,8 @@ RUN apt-get install -y zlib1g-dev && \
     apt-get install -y libzip-dev && \
     apt-get install -y php-xm && \
     apt-get install -y php-mbstring && \
-    apt-get -y install php-curl && \
-    apt-get -y install php-mysql
+    apt-get install -y php-curl && \
+    apt-get install -y php-mysql
 
 RUN ["/bin/bash", "-c", "echo PATH=$PATH:~/.composer/vendor/bin/ >> ~/.bashrc"]
 RUN ["/bin/bash", "-c", "source ~/.bashrc"]
