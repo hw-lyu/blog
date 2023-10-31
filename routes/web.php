@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 use App\Http\Controllers\WelcomeController;
 
 /*
@@ -14,5 +13,4 @@ use App\Http\Controllers\WelcomeController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');

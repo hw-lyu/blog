@@ -7,9 +7,6 @@ use App\Models\BoardPost;
 use App\Models\BoardTagList;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\BoardPost>
- */
 class BoardPostFactory extends Factory
 {
     protected $model = BoardPost::class;

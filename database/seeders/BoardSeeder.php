@@ -56,7 +56,7 @@ class BoardSeeder extends Seeder
                 'name_ko' => "개발",
                 'parent_id' => 2,
                 'depth' => 2,
-                'order' => 1,
+                'order' => 2,
                 'use' => true
             ],
             [
@@ -72,7 +72,7 @@ class BoardSeeder extends Seeder
                 'name_ko' => "리뷰",
                 'parent_id' => 2,
                 'depth' => 2,
-                'order' => 2,
+                'order' => 4,
                 'use' => true
             ]
         ];
