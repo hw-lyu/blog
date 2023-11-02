@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use Inertia\Inertia;
-use Inertia\Response;
+use Inertia\Response as InertiaResponse;
 
 class WelcomeController extends Controller
 {
     /**
      * 메인
      *
-     * @return Response
+     * @return InertiaResponse
      */
-    public function index() : Response {
+    public function index() : InertiaResponse {
         // 전역 세션 추가
         session_start();
 

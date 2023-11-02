@@ -20,11 +20,13 @@ class BoardPostFactory extends Factory
     {
         $board = Board::get();
         $boardTag = BoardTagList::get();
+        $boardContent = $this->faker->randomHtml();
 
         return [
             'subject' => $this->faker->word(),
-            'content' => $this->faker->randomHtml(),
-            'file_data' => json_encode("{'url' : '//placehold.co/800@2x.png', 'extension': 'png', 'type' : ' image/png', 'name' : '800@2x.png', 'size' : 0}"),
+            'content' => $boardContent,
+            'strip_content' => strip_tags($boardContent),
+            'file_data' => json_encode(['url' => '//placehold.co/800@2x.png', 'extension' => 'png', 'type' => 'image/png', 'name' => '800@2x.png', 'size' => 0]),
             'board_id' => $this->faker->numberBetween(1, $board->count()),
             'tag_id' => $this->faker->numberBetween(1, $boardTag->count()),
             'writer' => 'lumii',

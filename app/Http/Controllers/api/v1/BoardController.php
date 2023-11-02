@@ -5,17 +5,30 @@ namespace App\Http\Controllers\api\v1;
 use App\Http\Controllers\Controller;
 use App\Models\Board;
 use Illuminate\Http\Response;
+use Illuminate\Http\JsonResponse;
 
 class BoardController extends Controller
 {
-    public function index()
+
+    public function __construct(
+        public Board $board
+    )
+    {
+    }
+
+    /**
+     * 게시판 리스트
+     *
+     * @return JsonResponse
+     */
+    public function index() : JsonResponse
     {
         /**
          * select * from `board` where `use` = 1
          * order by `parent_id` asc, `depth` asc, `order` asc
          */
 
-        $data = Board::where('use', true)
+        $data = $this->board::where('use', true)
             ->orderBy('parent_id', 'asc')
             ->orderBy('depth', 'asc')
             ->orderBy('order', 'asc')

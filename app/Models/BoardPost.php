@@ -15,6 +15,7 @@ class BoardPost extends Model
     protected $fillable = [
         'subject',
         'content',
+        'strip_content',
         'file_data',
         'board_id',
         'tag_id',

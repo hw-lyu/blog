@@ -17,7 +17,7 @@ export default function Header() {
             data[prop].map((ele) => {
                 let propId: number = parseInt(prop) + 1;
                 let parentId: number = ele.parent_id;
-                let lastOrderId : number = data[prop].length;
+                let lastOrderId: number = data[prop].length;
 
                 if (propId === parentId) {
                     if (ele.depth === 1 && ele.order === 1) {
@@ -41,7 +41,7 @@ export default function Header() {
 
     return (
         <header className="border-solid border-gray-300 border-b shadow-lg">
-            <div className="inner flex justify-between">
+            <div className="max-w-[808px] flex justify-between ml-auto mr-auto pt-3 pb-3 pl-5 pr-5">
                 <h1 className="text-xl font-bold tracking-wide"><a href="/" className="block">Lumii World</a></h1>
                 <div className="flex items-baseline">
                     <nav className="flex mr-20">

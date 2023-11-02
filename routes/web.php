@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\BoardPostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,3 +15,6 @@ use App\Http\Controllers\WelcomeController;
 |
 */
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
+
+Route::resource('board/post',BoardPostController::class)
+    ->parameters(['post' => 'postId']);

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('subject', '255')->comment('게시판 제목명');
             $table->mediumText('content')->comment('글내용');
+            $table->mediumText('strip_content')->comment('글내용(태그삭제)');
             $table->json('file_data')->nullable()->comment('파일 데이터');
             $table->integer('board_id')->comment('게시판 아이디');
             $table->integer('tag_id')->nullable()->comment('태그 아이디');
