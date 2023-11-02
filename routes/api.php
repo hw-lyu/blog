@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\v1\MembersController;
 use App\Http\Controllers\api\v1\BoardController;
 use App\Http\Controllers\api\v1\BoardPostController;
 
+use App\Http\Controllers\api\v1\BoardTagController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,10 @@ Route::group(['prefix' => 'admin/v1', 'as' => 'api.admin.v1.'], function () {
 Route::group(['prefix' => 'v1', 'as' => 'api.v1.'], function () {
     Route::get('board', [BoardController::class, 'index'])
         ->name('board');
+
+    Route::get('board/tag/{tagId}', [BoardTagController::class, 'index'])
+        ->name('board.tag');
+
     Route::resource('board/post', BoardPostController::class)
         ->parameters(['post' => 'postId']);
 });

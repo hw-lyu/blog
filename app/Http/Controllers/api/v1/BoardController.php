@@ -9,7 +9,6 @@ use Illuminate\Http\JsonResponse;
 
 class BoardController extends Controller
 {
-
     public function __construct(
         public Board $board
     )

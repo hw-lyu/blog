@@ -18,7 +18,7 @@ export default function List({post_id, subject, strip_content, file_url, created
                 <p className="leading-6	line-clamp-3 break-all">{strip_content}</p>
                 <p className="mt-3">{new Date(created_at).toLocaleString()}</p>
                 <div className="card-actions justify-end">
-                    <a href={`board/post/${post_id}`} className="btn btn-primary">보기</a>
+                    <a href={`/board/post/${post_id}`} className="btn btn-primary">보기</a>
                 </div>
             </div>
         </div>
