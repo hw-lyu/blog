@@ -13,7 +13,6 @@ export default function Detail({post_id}: Props) {
     const [boardTagData, setBoardTagData] = useState([]);
 
     useEffect(() => {
-
         axios.get(`/api/v1/board/post/${post_id}`)
             .then((res) => {
                 setData(res.data.post);
