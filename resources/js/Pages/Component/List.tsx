@@ -1,5 +1,4 @@
 import React from "@inertiajs/react";
-import Pagination from "./Pagination";
 
 type Props = {
     key: number,
