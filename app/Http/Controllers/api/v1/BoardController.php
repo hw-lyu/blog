@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Board;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Str;
 
 class BoardController extends Controller
 {
@@ -20,7 +21,7 @@ class BoardController extends Controller
      *
      * @return JsonResponse
      */
-    public function index() : JsonResponse
+    public function index(): JsonResponse
     {
         /**
          * select * from `board` where `use` = 1
@@ -44,8 +45,8 @@ class BoardController extends Controller
                 if ($dataArr[$i]['parent_id'] !== $dataArr[$o]['parent_id']) continue;
 
                 // id와 parent_id가 같은 경우에만 재가공
-                if($dataArr[$i]['id'] === $dataArr[$o]['parent_id']) {
-                    $menu[($dataArr[$i]['parent_id']) - 1][] = $dataArr[$o];
+                if ($dataArr[$i]['id'] === $dataArr[$o]['parent_id']) {
+                    $menu[($dataArr[$i]['parent_id']) - 1][] = ['name_en' => Str::of($dataArr[$o]['name'])->lower()->replace(' ', '_'), ...$dataArr[$o]];
                 }
             }
         }

@@ -22,11 +22,11 @@ export default function Header() {
                 if (propId === parentId) {
                     if (ele.depth === 1 && ele.order === 1) {
                         tag += `<div class="flex-col ml-5">`;
-                        tag += `<div class="mb-2"><a href="">${ele.name}</a></div>`;
+                        tag += `<div class="mb-2"><a href="${ele.name_en}">${ele.name}</a></div>`;
                     }
 
                     if (ele.depth === 2) {
-                        tag += `<div class="text-sm"><a href="">${ele.name}</a></div>`;
+                        tag += `<div class="text-sm"><a href="${ele.name_en}">${ele.name}</a></div>`;
                     }
 
                     if (ele.depth === 1 && (ele.order === lastOrderId) || ele.depth === 2 && (ele.order === lastOrderId)) {
