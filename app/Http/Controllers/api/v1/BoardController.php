@@ -46,7 +46,7 @@ class BoardController extends Controller
 
                 // id와 parent_id가 같은 경우에만 재가공
                 if ($dataArr[$i]['id'] === $dataArr[$o]['parent_id']) {
-                    $menu[($dataArr[$i]['parent_id']) - 1][] = ['name_en' => Str::of($dataArr[$o]['name'])->lower()->replace(' ', '_'), ...$dataArr[$o]];
+                    $menu[($dataArr[$i]['parent_id']) - 1][] = ['name_en' => Str::slug($dataArr[$o]['name'], '-'), ...$dataArr[$o]];
                 }
             }
         }

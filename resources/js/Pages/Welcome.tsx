@@ -34,7 +34,8 @@ const Welcome = () => {
                     PaginationData.map((ele: any, idx: number) => {
                         return (
                             <a href={ele.url?.replace('/api/v1', '')} key={idx}
-                               className={`join-item btn${ele.active ? ' btn-active' : ''}`}>{ele.label}</a>
+                               className={`join-item btn${ele.active ? ' btn-active' : ''}`}
+                               dangerouslySetInnerHTML={{__html: ele.label}}></a>
                         )
                     })
                 }
