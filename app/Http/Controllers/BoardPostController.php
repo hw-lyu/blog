@@ -15,9 +15,6 @@ class BoardPostController extends Controller
      */
     public function index() : InertiaResponse
     {
-        // 전역 세션 추가
-        session_start();
-
         return Inertia::render('Welcome');
     }
 

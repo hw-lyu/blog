@@ -9,14 +9,12 @@ use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Http as FacadesHttp;
 use JetBrains\PhpStorm\NoReturn;
 
-class MembersController extends Controller
+class MembersLoginController extends Controller
 {
-    protected object $client;
     protected const TOKEN_INFO_API_URL = "https://www.googleapis.com/oauth2/v1/tokeninfo";
 
-    public function __construct(Client $client)
+    public function __construct(protected Client $client)
     {
-        $this->client = $client;
     }
 
     /**
@@ -54,9 +52,11 @@ class MembersController extends Controller
     }
 
     /**
-     * 구글 로그인 콜백
+     *  구글 로그인 콜백
      *
+     * @return void
      * @throws Exception
+     * @throws RequestException
      */
     public function oauth2callback(): void
     {
@@ -73,7 +73,15 @@ class MembersController extends Controller
             header('Location: ' . filter_var($auth_url, FILTER_SANITIZE_URL));
         } else {
             $this->client->authenticate($_GET['code']);
-            $_SESSION['access_token'] = $this->client->getAccessToken();
+
+            // 관리자 아이디가 아니면 로그인 금지
+            $http = FacadesHttp::get(self::TOKEN_INFO_API_URL . "?id_token={$this->client->getAccessToken()['id_token']}")->throw()->json();
+            if ($http['email'] !== env('ADMIN_EMAIL')) {
+                abort(404);
+            }
+
+            $_SESSION['admin_email'] = $http['email'];
+
             $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . '/';
 
             header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));

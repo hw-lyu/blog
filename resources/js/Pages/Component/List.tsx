@@ -9,6 +9,7 @@ type Props = {
     created_at: string
 }
 export default function List({post_id, subject, strip_content, file_url, created_at}: Props) {
+
     return (
         <div className="card card-side bg-base-100 shadow-xl mb-10">
             <figure className="basis-1/3"><img src={file_url} alt={subject} className="w-full h-full object-cover" /></figure>
