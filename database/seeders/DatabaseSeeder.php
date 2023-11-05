@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
             BoardSeeder::class,
             BoardTagListSeeder::class,
             BoardPostSeeder::class,
+            BoardPostTagSeeder::class
         ]);
     }
 }

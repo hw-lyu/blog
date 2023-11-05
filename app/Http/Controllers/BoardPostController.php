@@ -27,9 +27,10 @@ class BoardPostController extends Controller
      * @param int $postId
      * @return InertiaResponse
      */
-    public function show(int $postId): InertiaResponse
+    public function show(string $boardName, int $postId): InertiaResponse
     {
         return Inertia::render('Component/Detail', [
+            'board_name' => $boardName,
             'post_id' => $postId
         ]);
     }

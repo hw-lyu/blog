@@ -14,7 +14,7 @@ class BoardTagListSeeder extends Seeder
     {
         $data = $this->getBoardTagList();
 
-        foreach($data as $board) {
+        foreach ($data as $board) {
             BoardTagList::insert($board);
         }
     }
@@ -24,12 +24,17 @@ class BoardTagListSeeder extends Seeder
      *
      * @return array
      */
-    public function getBoardTagList() : array
+    public function getBoardTagList(): array
     {
         return [
             [
-                'name' => 'Chat',
-                'name_ko' => "잡담",
+                'name' => 'About Me',
+                'name_ko' => "나에 대해서",
+                'use' => true
+            ],
+            [
+                'name' => 'Blog',
+                'name_ko' => "블로그",
                 'use' => true
             ],
             [
@@ -50,6 +55,11 @@ class BoardTagListSeeder extends Seeder
             [
                 'name' => 'Review',
                 'name_ko' => "리뷰",
+                'use' => true
+            ],
+            [
+                'name' => 'Chat',
+                'name_ko' => "잡담",
                 'use' => true
             ]
         ];

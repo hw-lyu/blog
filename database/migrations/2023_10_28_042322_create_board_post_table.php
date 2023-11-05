@@ -18,7 +18,6 @@ return new class extends Migration
             $table->mediumText('strip_content')->comment('글내용(태그삭제)');
             $table->json('file_data')->nullable()->comment('파일 데이터');
             $table->integer('board_id')->comment('게시판 아이디');
-            $table->integer('tag_id')->nullable()->comment('태그 아이디');
             $table->string('writer')->comment('글 작성자');
             $table->tinyInteger('use')->default(0)->comment('글 사용여부');
             $table->timestamps();

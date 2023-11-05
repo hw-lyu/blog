@@ -6,19 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class BoardPost extends Model
+class BoardPostTag extends Model
 {
-    use HasFactory;
-    use SoftDeletes;
+    use HasFactory, SoftDeletes;
 
-    protected $table = 'board_post';
+    protected $table = 'board_post_tag';
     protected $fillable = [
-        'subject',
-        'content',
-        'strip_content',
-        'file_data',
+        'tag_id',
         'board_id',
-        'writer',
         'use'
     ];
     protected $attributes = [

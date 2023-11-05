@@ -16,5 +16,5 @@ use App\Http\Controllers\BoardPostController;
 */
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
-Route::resource('board/post',BoardPostController::class)
+Route::resource('board/{boardName}/post',BoardPostController::class)
     ->parameters(['post' => 'postId']);

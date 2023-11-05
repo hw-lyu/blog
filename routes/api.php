@@ -36,7 +36,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.v1.'], function () {
     Route::get('board/tag/{tagId}', [BoardTagController::class, 'index'])
         ->name('board.tag');
 
-    Route::resource('board/post', BoardPostController::class)
+    Route::resource('board/{boardName}/post', BoardPostController::class)
         ->parameters(['post' => 'postId']);
 });
 

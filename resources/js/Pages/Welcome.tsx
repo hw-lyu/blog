@@ -10,7 +10,8 @@ const Welcome = () => {
     const [PaginationData, setPaginationData] = useState([]);
 
     useEffect(() => {
-        axios.get(`/api/v1/board/post${location.search}`).then((res) => {
+
+        axios.get(`/api/v1${location.pathname === '/' ? '/board/all/post' : location.pathname}${location.search}`).then((res) => {
             setData(res.data.post.data);
             setPaginationData(res.data.post.links);
         });
