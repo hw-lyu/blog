@@ -50,7 +50,7 @@ export default function Header() {
                         }}>
                         </div>
                     </nav>
-                    <a href="/api/admin/v1/members" className="ml-5 text-xs">관리자<br/>로그인</a>
+                    <a href="/api/admin/v1/members/oauth2" className="ml-5 text-xs">관리자<br/>로그인</a>
                 </div>
             </div>
         </header>

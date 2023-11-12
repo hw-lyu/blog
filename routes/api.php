@@ -1,11 +1,10 @@
 <?php
 
-use App\Http\Controllers\admin\v1\MembersLoginController;
-use App\Http\Controllers\admin\v1\MemberController;
-use App\Http\Controllers\api\v1\BoardController;
-use App\Http\Controllers\api\v1\BoardPostController;
-
-use App\Http\Controllers\api\v1\BoardTagController;
+use App\Http\Controllers\Admin\V1\MemberController;
+use App\Http\Controllers\Admin\V1\MembersLoginController;
+use App\Http\Controllers\Api\V1\BoardController;
+use App\Http\Controllers\Api\V1\BoardPostController;
+use App\Http\Controllers\Api\V1\BoardTagController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 | Here is where you can register API routes for your application. These
 | routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
+| be assigned to the "Api" middleware group. Make something great!
 |
 */
 
@@ -25,9 +24,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(['prefix' => 'admin/v1', 'as' => 'api.admin.v1.'], function () {
-    Route::get('members', [MembersLoginController::class, 'index']);
-    Route::get('members/oauth2', [MembersLoginController::class, 'oauth2callback']);
-    Route::get('member', [MemberController::class, 'index']);
+    Route::get('members', [MembersLoginController::class, 'index'])
+        ->name('members');
+    // 임시적으로 세션 사용 - 관리자용 아이디 여러개를 쓰지 않으므로 우선 응답시 세션을 받아 관리자 아이디 처리함
+    Route::get('member', [MemberController::class, 'index'])
+        ->name('member')->middleware(['web']);
+    Route::get('members/oauth2', [MembersLoginController::class, 'oauth2callback'])
+        ->name('members.oauth2')
+        ->middleware(['web']);
 });
 
 Route::group(['prefix' => 'v1', 'as' => 'api.v1.'], function () {

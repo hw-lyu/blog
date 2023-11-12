@@ -190,5 +190,4 @@ return [
     | Custom config variables
     |--------------------------------------------------------------------------
     */
-    'notion_key' => env('NOTION_SECRET_KEY')
 ];

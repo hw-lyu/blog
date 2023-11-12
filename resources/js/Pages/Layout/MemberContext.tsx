@@ -7,7 +7,7 @@ export function MemberProvider({children}) {
     const [authData, setAuthData] = useState({is_admin: false});
 
     useEffect(() => {
-        axios.get(`/api/admin/v1/member`)
+        axios.get(`/api/admin/v1/member${location.search}`)
             .then((res) => {
                 setAuthData(res.data);
             });

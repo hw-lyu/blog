@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\admin\v1;
+namespace App\Http\Controllers\Admin\V1;
 
 use App\Http\Controllers\Controller;
-use Google\Exception;
 use Google\Client;
+use Google\Exception;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Http as FacadesHttp;
-use JetBrains\PhpStorm\NoReturn;
 
 class MembersLoginController extends Controller
 {
@@ -41,8 +40,9 @@ class MembersLoginController extends Controller
                 abort(404);
             }
 
-            $_SESSION['admin_email'] = $http['email'];
-            $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . '/';
+            session()->put('admin_email', $http['email']);
+
+            $redirect_uri = "http://" . $_SERVER['HTTP_HOST'] . "/";
 
             header('Location: ' . $redirect_uri);
         } else {
@@ -75,14 +75,17 @@ class MembersLoginController extends Controller
             $this->client->authenticate($_GET['code']);
 
             // 관리자 아이디가 아니면 로그인 금지
-            $http = FacadesHttp::get(self::TOKEN_INFO_API_URL . "?id_token={$this->client->getAccessToken()['id_token']}")->throw()->json();
+            $accessToken = $this->client->getAccessToken();
+
+            $http = FacadesHttp::get(self::TOKEN_INFO_API_URL . "?id_token={$accessToken['id_token']}")->throw()->json();
+
             if ($http['email'] !== env('ADMIN_EMAIL')) {
                 abort(404);
             }
 
-            $_SESSION['admin_email'] = $http['email'];
+            session()->put('admin_email', $http['email']);
 
-            $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . '/';
+            $redirect_uri = "http://" . $_SERVER['HTTP_HOST'] . "/";
 
             header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
         }
