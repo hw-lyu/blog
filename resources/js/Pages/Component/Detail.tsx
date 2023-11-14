@@ -26,8 +26,8 @@ export default function Detail({board_name, post_id}: Props) {
                     <div className="mockup-browser-toolbar">
                         <div className="input"><span className="align-sub">{data.subject} #{data.tag_name_ko}</span></div>
                     </div>
-                    <div className="flex justify-center px-4 py-16 bg-base-200"
-                         dangerouslySetInnerHTML={{__html: data.content}}>
+                    <div className="flex justify-center px-4 py-16 bg-base-200">
+                        <div className="w-full" dangerouslySetInnerHTML={{__html: data.content}}></div>
                     </div>
                 </div>
             </Auth>

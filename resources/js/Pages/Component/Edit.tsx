@@ -48,7 +48,7 @@ export default function Edit({board_name, post_id}: Props) {
                 <div className="mockup-browser border bg-base-300 mb-10">
                     <div className="mockup-browser-toolbar">
                         <div className="input">
-                            <input type="text" className="w-full" ref={subject} defaultValue={data.subject || ''}
+                            <input type="text" className="w-full bg-transparent align-sub" ref={subject} defaultValue={data.subject || ''}
                                    onChange={e => {
                                        setFormData({...formData, subject: e.target.value})
                                    }}/>
