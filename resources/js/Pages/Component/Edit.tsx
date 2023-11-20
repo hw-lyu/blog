@@ -45,18 +45,18 @@ export default function Edit({board_name, post_id}: Props) {
         <HomeLayout children>
             <Auth board_name={board_name} post_id={post_id}
                   formData={formData} children>
-                <div className="mockup-browser border bg-base-300 mb-10">
-                    <div className="mockup-browser-toolbar">
-                        <div className="input">
-                            <input type="text" className="w-full bg-transparent align-sub" ref={subject} defaultValue={data.subject || ''}
-                                   onChange={e => {
-                                       setFormData({...formData, subject: e.target.value})
-                                   }}/>
-                        </div>
-                    </div>
-                    <div id="editor" ref={editorRef} className="w-ful lflex justify-center px-4 py-4 bg-base-200"></div>
-                </div>
             </Auth>
+            <div className="mockup-browser border bg-base-300 mb-10">
+                <div className="mockup-browser-toolbar">
+                    <div className="input">
+                        <input type="text" className="w-full bg-transparent align-sub" ref={subject} defaultValue={data.subject || ''}
+                               onChange={e => {
+                                   setFormData({...formData, subject: e.target.value})
+                               }}/>
+                    </div>
+                </div>
+                <div id="editor" ref={editorRef} className="w-ful lflex justify-center px-4 py-4 bg-base-200"></div>
+            </div>
         </HomeLayout>
     );
 }

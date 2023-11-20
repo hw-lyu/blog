@@ -21,16 +21,16 @@ export default function Detail({board_name, post_id}: Props) {
 
     return (
         <HomeLayout children>
-            <Auth board_name={board_name} post_id={post_id} formData="" children>
-                <div className="mockup-browser border bg-base-300 mb-10">
-                    <div className="mockup-browser-toolbar">
-                        <div className="input"><span className="align-sub">{data.subject} #{data.tag_name_ko}</span></div>
-                    </div>
-                    <div className="flex justify-center px-4 py-16 bg-base-200">
-                        <div className="w-full" dangerouslySetInnerHTML={{__html: data.content}}></div>
+            <Auth board_name={board_name} post_id={post_id} formData="" children=""></Auth>
+            <div className="mockup-browser border bg-base-300 mb-10">
+                <div className="mockup-browser-toolbar">
+                    <div className="input"><span className="align-sub">{data.subject} #{data.tag_name_ko}</span>
                     </div>
                 </div>
-            </Auth>
+                <div className="flex justify-center px-4 py-16 bg-base-200">
+                    <div className="w-full" dangerouslySetInnerHTML={{__html: data.content}}></div>
+                </div>
+            </div>
         </HomeLayout>
     )
 }
