@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BoardRequest;
 use App\Models\Board;
 use App\Models\BoardPost;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Str;
+use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
 class BoardPostController extends Controller
 {
@@ -94,5 +96,28 @@ class BoardPostController extends Controller
         }
 
         return response()->json(['post' => $post, 'code' => Response::HTTP_OK]);
+    }
+
+    public function update(string $boardName, int $postId, BoardRequest $request)
+    {
+        try {
+            $data = $request->all();
+
+            $update = BoardPost::where('id', $postId)
+                ->update([
+                    'subject' => $data['subject'],
+                    'content' => $data['content'],
+                    'strip_content' => strip_tags($data['content']),
+                    'file_data' => $data['file_data'],
+                    'board_id' => $data['board_id'],
+                    'writer' => $data['writer'],
+                    'use' => $data['use'],
+                    'updated_at' => now()
+                ]);
+
+            return response()->json(['data' => $data, 'updated' => $update], ResponseAlias::HTTP_OK);
+        } catch (\Exception $e) {
+            return response()->json(['msg' => $e->getMessage()], ResponseAlias::HTTP_FORBIDDEN);
+        }
     }
 }
