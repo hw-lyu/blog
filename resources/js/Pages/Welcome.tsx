@@ -23,7 +23,7 @@ const Welcome = () => {
                 return (
                     <List key={idx} post_id={ele.id} subject={ele.subject} strip_content={ele.strip_content}
                           created_at={ele.created_at}
-                          file_url={JSON.parse(ele.file_data).url}>
+                          files={JSON.parse(ele.file_data)}>
                     </List>
                 );
             })}

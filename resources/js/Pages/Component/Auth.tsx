@@ -1,6 +1,6 @@
 import React from "@inertiajs/react";
 import {MemberContext} from "../Layout/MemberContext";
-import {ReactElement, useEffect} from "react";
+import {ReactElement} from "react";
 import axios from "axios";
 
 type Props = {
@@ -14,8 +14,14 @@ export default function Auth({board_name, post_id, children, formData}: Props) {
     const handleClick = function (e) {
         const contentEle: Element | null = document.querySelector('.ProseMirror.toastui-editor-contents');
         let eTarget = e.target;
+        let imgArr: Element[] = Array.from(document.querySelectorAll('.ProseMirror.toastui-editor-contents img'));
+        let imgEleArr: { url: string }[] = []
 
-        console.log(contentEle);
+        for (let i = 0; i < imgArr.length; i++) {
+            if (!imgArr[i]['src'].length) continue;
+
+            imgEleArr.push({url: imgArr[i]['src']})
+        }
 
         if (eTarget.tagName === "BUTTON") {
             let options = {
@@ -25,6 +31,7 @@ export default function Auth({board_name, post_id, children, formData}: Props) {
                     ...formData,
                     id: post_id,
                     content: contentEle?.innerHTML,
+                    file_data : imgEleArr
                 }
             };
 

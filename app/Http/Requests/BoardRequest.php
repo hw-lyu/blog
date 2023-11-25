@@ -26,7 +26,7 @@ class BoardRequest extends FormRequest
             'subject' => 'required',
             'content' => 'required',
             'strip_content' => 'sometimes|required',
-            'file_data' => 'sometimes|JSON',
+            'file_data' => 'sometimes|array',
             'board_id' => 'required',
             'writer' => 'required',
             'use' => 'required|boolean',
@@ -68,7 +68,7 @@ class BoardRequest extends FormRequest
         return [
             '*.required' => ':attribute 은 필수입니다.',
             '*.integer' => ':attribute 은 숫자 형식으로 입력해야 합니다.',
-            '*.JSON' => ':attribute 은 JSON 형식으로 입력해야 합니다.',
+            '*.array' => ':attribute 은 array 형식으로 입력해야 합니다.',
             '*.boolean' => ':attribute 은 boolean 형식으로 입력해야 합니다.',
             '*.date' => ':attribute 은 date 형식으로 입력해야 합니다.',
         ];
