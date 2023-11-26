@@ -67,6 +67,14 @@ class BoardPostController extends Controller
         return response()->json(['post' => $post, 'code' => Response::HTTP_OK]);
     }
 
+    public function store(string $boardName, BoardRequest $request) {
+        $param = $request->all();
+
+        BoardPost::created([
+
+        ]);
+    }
+
     /**
      * 게시물 보기
      *
@@ -99,24 +107,32 @@ class BoardPostController extends Controller
         return response()->json(['post' => $post, 'code' => Response::HTTP_OK]);
     }
 
-    public function update(string $boardName, int $postId, BoardRequest $request)
+    /**
+     * 게시물 업데이트
+     *
+     * @param string $boardName
+     * @param int $postId
+     * @param BoardRequest $request
+     * @return JsonResponse
+     */
+    public function update(string $boardName, int $postId, BoardRequest $request) : JsonResponse
     {
         try {
-            $data = $request->all();
+            $param = $request->all();
 
             $update = BoardPost::where('id', $postId)
                 ->update([
-                    'subject' => $data['subject'],
-                    'content' => $data['content'],
-                    'strip_content' => strip_tags($data['content']),
-                    'file_data' => $data['file_data'],
-                    'board_id' => $data['board_id'],
-                    'writer' => $data['writer'],
-                    'use' => $data['use'],
+                    'subject' => $param['subject'],
+                    'content' => $param['content'],
+                    'strip_content' => strip_tags($param['content']),
+                    'file_data' => $param['file_data'],
+                    'board_id' => $param['board_id'],
+                    'writer' => $param['writer'],
+                    'use' => $param['use'],
                     'updated_at' => now()
                 ]);
 
-            return response()->json(['data' => $data, 'updated' => $update], ResponseAlias::HTTP_OK);
+            return response()->json(['data' => $param, 'updated' => $update], ResponseAlias::HTTP_OK);
         } catch (\Exception $e) {
             return response()->json(['msg' => $e->getMessage()], ResponseAlias::HTTP_FORBIDDEN);
         }

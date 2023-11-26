@@ -9,13 +9,16 @@ class BoardPostController extends Controller
 {
 
     /**
-     * 리스트
+     * 메인 페이지
      *
+     * @param string $boardName
      * @return InertiaResponse
      */
-    public function index(): InertiaResponse
+    public function index(string $boardName): InertiaResponse
     {
-        return Inertia::render('Welcome');
+        return Inertia::render('Welcome', [
+            'board_name' => $boardName
+        ]);
     }
 
     /**
@@ -33,6 +36,17 @@ class BoardPostController extends Controller
         ]);
     }
 
+    public function create(string $boardName) {
+        return Inertia::render('Component/Create');
+    }
+
+    /**
+     * 글 수정
+     *
+     * @param string $boardName
+     * @param int $postId
+     * @return InertiaResponse
+     */
     public function edit(string $boardName, int $postId): InertiaResponse
     {
         return Inertia::render('Component/Edit', [

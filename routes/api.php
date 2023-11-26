@@ -38,6 +38,9 @@ Route::group(['prefix' => 'v1', 'as' => 'api.v1.'], function () {
     Route::get('board', [BoardController::class, 'index'])
         ->name('board');
 
+    Route::get('board/tag/all', [BoardTagController::class, 'getTagList'])
+        ->name('board.tag.all');
+
     Route::get('board/tag/{tagId}', [BoardTagController::class, 'index'])
         ->name('board.tag');
 
